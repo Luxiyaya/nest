@@ -1,5 +1,7 @@
 // 应用程序的根模块
 import { Module, NestModule, RequestMethod, MiddlewareConsumer } from '@nestjs/common';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { DataSource} from 'typeorm'
 import { LoggerMiddleware } from './common/middleware/logger.middleware'
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
@@ -14,11 +16,21 @@ import { log } from './common/middleware/log.middleware';
 
 
 @Module({
-  imports: [CatModule, DogModule],
+  imports: [CatModule, DogModule, TypeOrmModule.forRoot({
+    type: 'mysql',
+    host: 'localhost',
+    port: 3306,
+    username: 'root',
+    password: 'root',
+    database: 'test',
+    entities: [],
+    synchronize: true,
+  })],
   controllers: [AppController, CatController, DogController, CreateCatDtoController],
   providers: [AppService, DogService],
 })
 export class AppModule implements NestModule {
+  constructor(private dataSource: DataSource){}
   // 配置中间件 consumer 中间件消费者 
   configure(consumer: MiddlewareConsumer) {
     consumer
