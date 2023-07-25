@@ -1,0 +1,34 @@
+import { Response, Request } from 'express';
+import { Observable } from 'rxjs';
+import { CreateDogDto } from './create.dog.dto';
+import { Dog } from './interface/dog.interface';
+import { DogService } from './dog.service';
+import { AppService } from './../app.service';
+export declare class DogController {
+    private dogService;
+    private appService;
+    constructor(dogService: DogService, appService: AppService);
+    findAll(request: Request): string;
+    findA(): String;
+    findB(): String;
+    findC(): String;
+    findD(params: any): String;
+    findE(): Promise<any[]>;
+    findF(): Observable<any[]>;
+    findG(createDogDto: CreateDogDto): Promise<string>;
+    create(res: Response): any[];
+    findH(res: Response): void;
+    createddd(createDogDto: CreateDogDto): Promise<void>;
+    findeF(): Promise<Dog[]>;
+    findY(): String;
+    setUser(req: Request): string;
+    getUser(): string;
+    getException(): void;
+    getCustom(): void;
+    getFilter(): void;
+    getOtherException(): void;
+    getPipe(id: number): Promise<string>;
+    getPipes(sdfsdfdsf: number): Promise<string>;
+    getPipesQuery(id: number): string;
+    findOne(uuid: string): Promise<string>;
+}
