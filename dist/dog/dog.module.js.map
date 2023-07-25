@@ -1,1 +1,0 @@
-{"version":3,"file":"dog.module.js","sourceRoot":"","sources":["../../src/dog/dog.module.ts"],"names":[],"mappings":";;;;;;;;;AAAA,2CAAwC;AACxC,+CAA2C;AAC3C,qDAAiD;AACjD,kDAA8C;AAMvC,IAAM,SAAS,uBAAf,MAAM,SAAS;CAAI,CAAA;oBAAb,SAAS;IAJrB,IAAA,eAAM,EAAC;QACN,WAAW,EAAE,CAAC,8BAAa,CAAC;QAC5B,SAAS,EAAE,CAAC,wBAAU,EAAE,wBAAU,CAAC;KACpC,CAAC;GACW,SAAS,CAAI"}
