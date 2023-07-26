@@ -1,13 +1,17 @@
 import { Injectable } from "@nestjs/common";
-import { InjectModel } from "@nestjs/mongoose";
-import { Model } from "mongoose";
+import { InjectModel, InjectConnection } from "@nestjs/mongoose";
+import { Connection, Model } from "mongoose";
 import { CreateCatDto } from "src/dto/create-cat.dto";
 import { Cat } from "src/schemas/cat.schema";
 
 
 @Injectable()
 export class CatService {
-  constructor(@InjectModel(Cat.name) private catModel: Model<Cat>) { }
+  constructor(
+    @InjectModel(Cat.name) private catModel: Model<Cat>,
+    // 使用InjectConnection注入connection保持原生API调用
+    @InjectConnection() private connection: Connection
+  ) { }
 
   async create(createCatDto: CreateCatDto): Promise<Cat> {
     const createdCat = new this.catModel(createCatDto);
