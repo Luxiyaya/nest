@@ -20,6 +20,9 @@ import { DataSource } from 'typeorm'
 // --- sequelize 集成---
 import { SequelizeModule } from '@nestjs/sequelize'
 
+// --- mongoose ---
+import { MongooseModule } from '@nestjs/mongoose'
+
 
 
 
@@ -27,6 +30,13 @@ import { SequelizeModule } from '@nestjs/sequelize'
 
 @Module({
   imports: [CatModule, DogModule,
+    MongooseModule.forRoot('mongodb://127.0.0.1:27017/', {
+      directConnection: true,
+      serverSelectionTimeoutMS: 2000,
+      dbName: 'context',
+      user: 'admin',
+      pass: 'admin',
+    })
     // /** typeORM集成 */
     // UsersModule,
     // TypeOrmModule.forRoot({
@@ -39,19 +49,19 @@ import { SequelizeModule } from '@nestjs/sequelize'
     //   entities: [User],
     //   synchronize: true,
     // })
-    
+
     /** sequelize */
-    SequelizeModule.forRoot({
-      dialect: 'mysql',
-      host: 'localhost',
-      port: 3306,
-      username: 'root',
-      password: 'root',
-      database: 'sequelize',
-      models: [],
-    }),
+    // SequelizeModule.forRoot({
+    //   dialect: 'mysql',
+    //   host: 'localhost',
+    //   port: 3306,
+    //   username: 'root',
+    //   password: 'root',
+    //   database: 'sequelize',
+    //   models: [],
+    // }),
   ],
-  controllers: [AppController, CatController, DogController, CreateCatDtoController],
+  // controllers: [AppController, CatController, DogController, CreateCatDtoController],
   providers: [AppService, DogService],
 })
 export class AppModule implements NestModule {
