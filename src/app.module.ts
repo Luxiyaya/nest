@@ -22,6 +22,8 @@ import { SequelizeModule } from '@nestjs/sequelize'
 
 // --- mongoose ---
 import { MongooseModule } from '@nestjs/mongoose'
+import { DobuleController } from './dobule/dobule.controller';
+import { DobuleModule } from './dobule/dobule.module';
 
 
 
@@ -29,14 +31,39 @@ import { MongooseModule } from '@nestjs/mongoose'
 
 
 @Module({
-  imports: [CatModule, DogModule,
-    MongooseModule.forRoot('mongodb://127.0.0.1:27017/', {
-      directConnection: true,
-      serverSelectionTimeoutMS: 2000,
-      dbName: 'context',
-      user: 'admin',
-      pass: 'admin',
-    })
+  imports: [
+    DobuleModule,
+    // CatModule, DogModule,
+    // MongooseModule.forRoot('mongodb://127.0.0.1:27017/', {
+    //   directConnection: true,
+    //   serverSelectionTimeoutMS: 2000,
+    //   dbName: 'context',
+    //   user: 'admin',
+    //   pass: 'admin',
+    // })
+    // MongooseModule.forRoot('mongodb://127.0.0.1:27017/cat', {
+    //   directConnection: true,
+    //   serverSelectionTimeoutMS: 2000,
+    //   user: 'admin',
+    //   pass: 'admin',
+    //   connectionName: 'users',
+    // }),
+    // MongooseModule.forRoot('mongodb://127.0.0.1:27017/dog', {
+    //   directConnection: true,
+    //   serverSelectionTimeoutMS: 2000,
+    //   user: 'admin',
+    //   pass: 'admin',
+    //   connectionName: 'users',
+    // }),
+    MongooseModule.forRoot('mongodb://127.0.0.1:27017/test', {
+      connectionName: 'cats',
+    }),
+    MongooseModule.forRoot('mongodb://127.0.0.1:27017/user', {
+      connectionName: 'users',
+    }),
+
+
+
     // /** typeORM集成 */
     // UsersModule,
     // TypeOrmModule.forRoot({
