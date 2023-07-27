@@ -100,7 +100,6 @@ export class AppModule implements NestModule {
       // .apply(log)
       // .forRoutes(DogController)
 
-
       // 多个中间件
       .apply(log, LoggerMiddleware)
       .forRoutes(DogController, CatController)
