@@ -15,10 +15,10 @@ async function bootstrap() {
 
   // 全局pip 验证
   app.useGlobalPipes(new ValidationPipe({
-    disableErrorMessages: true,   // 错误消息不会显示在响应正文中
-    whitelist: true,              // 自动删除不存在白名单【验证类中没有任何装饰器的属性】属性
-    forbidNonWhitelisted: true,   // 存在非白名单实属性的时候停止处理请求【同时也需要将whitelist设为ture】
-
+    // disableErrorMessages: true,   // 错误消息不会显示在响应正文中
+    // whitelist: true,              // 自动删除不存在白名单【验证类中没有任何装饰器的属性】属性
+    // forbidNonWhitelisted: true,   // 存在非白名单实属性的时候停止处理请求【同时也需要将whitelist设为ture】
+    // transform: true,              // 启用自动转换【可以将有效载荷转换为根据DTO类类型化的对象】
 
   }))
   await app.listen(9000);
