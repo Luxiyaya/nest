@@ -25,7 +25,11 @@ import { MongooseModule } from '@nestjs/mongoose'
 import { DobuleController } from './dobule/dobule.controller';
 import { DobuleModule } from './dobule/dobule.module';
 
+/** 缓存 */
+import { CacheModule } from '@nestjs/cache-manager'
 
+/** 网页授权 */
+import {WechartModule } from './wechart/wechart.module'
 
 
 
@@ -33,6 +37,7 @@ import { DobuleModule } from './dobule/dobule.module';
 @Module({
   imports: [
     DobuleModule,
+    WechartModule,
     // CatModule, DogModule,
     // MongooseModule.forRoot('mongodb://127.0.0.1:27017/', {
     //   directConnection: true,
@@ -61,7 +66,7 @@ import { DobuleModule } from './dobule/dobule.module';
     MongooseModule.forRoot('mongodb://127.0.0.1:27017/user', {
       connectionName: 'users',
     }),
-
+    CacheModule.register()
 
 
     // /** typeORM集成 */

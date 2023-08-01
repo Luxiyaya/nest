@@ -8,6 +8,7 @@ import { ValidationPipe } from '@nestjs/common';
 async function bootstrap() {
   // abort 创建应用程序失败后抛出一个异常
   const app = await NestFactory.create(AppModule, { abortOnError: false });
+  app.enableCors();//node设置跨域
   // 全局中间件
   app.use(G_LOG)
   // 全局异常过滤器
@@ -21,6 +22,6 @@ async function bootstrap() {
     // transform: true,              // 启用自动转换【可以将有效载荷转换为根据DTO类类型化的对象】
 
   }))
-  await app.listen(9000);
+  await app.listen(80);
 }
 bootstrap();

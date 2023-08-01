@@ -1,12 +1,17 @@
 // 具有单一路由的控制器
-import { Controller, Get, Req } from '@nestjs/common';
+import { Controller, Get, Req, Inject } from '@nestjs/common';
 import { AppService } from './app.service';
 import { Request } from 'express';
 import { Query } from '@nestjs/common';
 
+/** 缓存 */
+import { Cache } from 'cache-manager'
+import { CACHE_MANAGER, } from '@nestjs/cache-manager';
+
+
 @Controller()
 export class AppController {
-  constructor(private readonly appService: AppService,) { }
+  constructor(@Inject(CACHE_MANAGER) private cacheManager: Cache, private readonly appService: AppService,) { }
 
 
   @Get()
