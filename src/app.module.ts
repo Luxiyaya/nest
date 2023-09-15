@@ -29,15 +29,18 @@ import { DobuleModule } from './dobule/dobule.module';
 import { CacheModule } from '@nestjs/cache-manager'
 
 /** 网页授权 */
-import {WechartModule } from './wechart/wechart.module'
+// import {WechartModule } from './wechart/wechart.module'
 
-
+/** 事件触发器 */
+import { EventEmitterModule } from '@nestjs/event-emitter'
 
 
 @Module({
   imports: [
     DobuleModule,
-    WechartModule,
+    /** 初始化事件触发器并且注册应用中存在的任何声明性事件监听器 */
+    EventEmitterModule.forRoot(),
+    // WechartModule,
     // CatModule, DogModule,
     // MongooseModule.forRoot('mongodb://127.0.0.1:27017/', {
     //   directConnection: true,
