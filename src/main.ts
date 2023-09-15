@@ -1,4 +1,5 @@
 import { NestFactory } from '@nestjs/core';
+import { Transport, MicroserviceOptions } from '@nestjs/microservices'
 import { AppModule } from './app.module';
 import { log } from './common/middleware/log.middleware'
 import { G_LOG } from './common/middleware/globallog.middleware';
